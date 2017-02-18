@@ -34,6 +34,7 @@ if [ ${DEV} -eq 1 ] ; then
     
   git config --global user.email "manzato@gmail.com"
   git config --global user.name "Guillermo Manzato"
+  git config --global push.default simple
 
   if [ ${HEADLESS} -eq 0 ] ; then
     wget https://atom.io/download/deb -O /tmp/atom.deb
