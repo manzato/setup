@@ -1,11 +1,8 @@
 #!/bin/bash
 
-HEADLESS=0
-DEV=0
-
 function ask {
-  Q=$1
-  VAR=$2
+  Q=${1}
+  VAR=${2}
   while true ; do
     echo "${Q} [y/n]"
     read -sn 1 a
@@ -20,6 +17,10 @@ function ask {
   done 
 }
 
+
+HEADLESS=0
+DEV=0
+
 ask "Is this machine headless?" HEADLESS
 ask "Is this a dev machine ?" DEV
 
@@ -30,7 +31,7 @@ echo "export EDITOR=vi" >> ~/.bashrc
 
 if [ ${DEV} -eq 1 ] ; then
   sudo apt-get install -y tmux git 
-  
+    
   git config --global user.email "manzato@gmail.com"
   git config --global user.name "Guillermo Manzato"
 
@@ -40,7 +41,7 @@ if [ ${DEV} -eq 1 ] ; then
     sudo apt-get install -f
   fi
 fi
-
+  
 if [ ${HEADLESS} -eq 0 ] ; then
   sudo apt-get install -y indicator-multiload indicator-cpufreq
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/google-chrome-stable_current_amd64.deb
